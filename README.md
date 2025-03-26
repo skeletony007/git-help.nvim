@@ -10,6 +10,10 @@ Using [lazy.nvim]
 return {
     "skeletony007/git-help.nvim",
 
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+    },
+
     config = true,
 }
 ```
