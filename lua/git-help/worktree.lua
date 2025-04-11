@@ -41,20 +41,7 @@ M.create_worktree_menu = function(cwd)
     if branch == "" then
         error("branch cannot be empty")
     end
-
-    local upstream_options = git_help.get_upstreams(cwd)
-    table.insert(upstream_options, "new upstream")
-
-    local upstream_textlist = { "Select git-worktree upstream:" }
-    for i, v in ipairs(upstream_options) do
-        table.insert(upstream_textlist, string.format([[%d "%s"]], i, v))
-    end
-
-    local upstream = upstream_options[vim.fn.inputlist(upstream_textlist)]
-    if upstream == "new upstream" then
-        upstream = vim.fn.input("Enter new worktree upstream: ")
-    end
-
+    local upstream = vim.fn.input("Enter new worktree upstream: ", git_help.get_upstreams(cwd)[1])
     if upstream == "" then
         error("upstream cannot be empty")
     end
